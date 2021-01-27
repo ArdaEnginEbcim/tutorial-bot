@@ -6,7 +6,7 @@ module.exports = {
     },
     config: {
         permLevel: {
-            author: 0 /*Message Author Perm*/
+            author: [] /*Message Author Perm*/
         }
     },
     async run(client, message, args) {
