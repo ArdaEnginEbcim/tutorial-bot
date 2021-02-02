@@ -2,17 +2,18 @@ const chalk = require('chalk');
 const Discord = require('discord.js');
 const Meska = require('meska.js');
 const log = require('./src/utils/log');
+const config = require('./config/');
 const client = new Discord.Client();
 const Commands = new Meska.Handler.Command('src/commands');
 const Events = new Meska.Handler.Event('src/events');
 require('dotenv').config()
 
-client.login(process.env.TOKEN).then(
+client.login(config.token).then(
     function() {
         Events.load(client);
         Commands.load(client);
         client.on('message' async(message) => {
-            Commands.message(message, { prefix: process.env.PREFIX, owner: process.enc.OWNERID })
+            Commands.message(message, { prefix: config.prefix, owner: config.sahip })
         }
         console.log(log.success + chalk.green('TOKEN ' + ' - ' + 'works successfully!'));
     },
